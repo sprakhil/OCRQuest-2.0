@@ -6,11 +6,19 @@ from colpali_engine.models import ColPali, ColPaliProcessor
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-model_colpali = ColPali.from_pretrained("vidore/colpali-v1.2", torch_dtype=torch.bfloat16).to(device)
-processor_colpali = ColPaliProcessor.from_pretrained("google/paligemma-3b-mix-448")
+try:
+    model_colpali = ColPali.from_pretrained("vidore/colpali-v1.2", torch_dtype=torch.bfloat16).to(device)
+    processor_colpali = ColPaliProcessor.from_pretrained("google/paligemma-3b-mix-448")
+except Exception as e:
+    st.error(f"Error loading ColPali model or processor: {e}")
+    st.stop()
 
-model_qwen = Qwen2VLForConditionalGeneration.from_pretrained("Qwen/Qwen2-VL-7B-Instruct").to(device)
-processor_qwen = AutoProcessor.from_pretrained("Qwen/Qwen2-VL-7B-Instruct")
+try:
+    model_qwen = Qwen2VLForConditionalGeneration.from_pretrained("Qwen/Qwen2-VL-7B-Instruct").to(device)
+    processor_qwen = AutoProcessor.from_pretrained("Qwen/Qwen2-VL-7B-Instruct")
+except Exception as e:
+    st.error(f"Error loading Qwen model or processor: {e}")
+    st.stop()
 
 st.title("OCR and Document Search Web Application")
 st.write("Upload an image containing text in both Hindi and English for OCR processing and keyword search.")
