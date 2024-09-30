@@ -1,3 +1,16 @@
+---
+title: OCRQuest
+emoji: 🔥
+colorFrom: indigo
+colorTo: green
+sdk: gradio
+sdk_version: 4.44.0
+app_file: app.py
+pinned: false
+---
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+
+
 # OCRQuest-2.0
 
 # OCR and Document Search Web Application
@@ -46,23 +59,11 @@ This web application allows users to upload images containing text in both Hindi
     Open your web browser and go to `http://localhost:8501`.
 
 ## Deployment
-To deploy the application on Streamlit, follow these steps:
-
-1. **Create a Streamlit account**:
-    - Sign up at Streamlit.
-
-2. **Prepare your repository**:
-    - Ensure all dependencies are listed in `requirements.txt`.
-    - Include a `Procfile` with the following content:
-        ```plaintext
-        web: streamlit run ocr_script.py
-        ```
-
-3. **Deploy to Streamlit**:
-    - Push your code to a GitHub repository.
-    - Go to your Streamlit dashboard and click on "New app".
-    - Connect your GitHub repository and select the branch and file (`ocr_script.py`) to deploy.
-    - Click "Deploy" and Streamlit will handle the rest.
+I have deployed this application on Hugging Face Spaces.
+- To deploy on Hugging Face Spaces:
+- 1.Create a repository on Hugging Face under the Spaces tab.
+- 2.Add app.py file and requirements.txt file that lists all dependencies
+- 3.Push the repository to Hugging Face, and it will automatically deploy the application.
 
 4. **Access your deployed app**:
     - Once deployed, you will receive a URL to access your application.
